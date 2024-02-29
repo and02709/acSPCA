@@ -4,19 +4,7 @@
 \alias{ac.resid.spca}
 \title{Residualized adjusted for confounding supervised principal component analysis}
 \usage{
-ac.resid.spca(
-  X,
-  Y,
-  a,
-  L,
-  A,
-  H,
-  lambda,
-  npc,
-  fast.mat = F,
-  parallel = F,
-  clust = NULL
-)
+ac.resid.spca(X, Y, a, L, A, H, lambda, npc, parallel = F, clust = NULL)
 }
 \arguments{
 \item{X}{nxp data matrix}
@@ -34,8 +22,6 @@ ac.resid.spca(
 \item{lambda}{penalty term for confounding variable adjustment}
 
 \item{npc}{number of principl components}
-
-\item{fast.mat}{flag for whether to use Rfast coding}
 
 \item{parallel}{parallelization of residualization}
 

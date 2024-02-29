@@ -7,14 +7,13 @@
 #' @param H centering matrix 
 #' @param lambda penalty term for confounding variable adjustment 
 #' @param npc number of principl components
-#' @param fast.mat flag for whether to use Rfast coding
 #' @param parallel parallelization of residualization 
 #' @param clust cluster of cores for parallel procedure
 #' @keywords Sparse Adjusted Confounding Supervised Principal Component Analysis
 #' @export
 #' @examples ac.resid.spca(X, Y, a, L, A, H, lambda, npc, fast.mat=F, parallel=F, clust=NULL)
 
-ac.resid.spca <- function(X, Y, a, L, A, H, lambda, npc, fast.mat=F, parallel=F, clust=NULL){
+ac.resid.spca <- function(X, Y, a, L, A, H, lambda, npc, parallel=F, clust=NULL){
   # Residualize the data matrix X
   n <- nrow(X)
   p <- ncol(X)

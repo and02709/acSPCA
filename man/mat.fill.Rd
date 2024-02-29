@@ -7,6 +7,8 @@
 mat.fill(param.grid, n.sp, n.folds)
 }
 \arguments{
+\item{param.grid}{dataframe of parameters}
+
 \item{n.sp}{number of sparse parameter options}
 
 \item{n.folds}{number of folds}
