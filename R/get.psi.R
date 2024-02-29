@@ -19,7 +19,9 @@ get.psi <- function(X,L,n,p){
   # Generation of diagonal matrix of square root eigenvalues of L
   Sigmat <- diag(sqrt(zapsmall(EV)))
   # Generation of Delta such that t(Delta)%*%Delta=L
-  Delta <- Rfast::Tcrossprod(Rfast::mat.mult(U, Sigmat), U)
+  #Delta <- Rfast::Tcrossprod(Rfast::mat.mult(U, Sigmat), U)
+  Delta <- tcrossprod(U%*%Sigmat,U)
   # Generation of Psi matrix
-  return(Rfast::Crossprod(Delta, Rfast::mat.mult(H,X)))
+  #return(Rfast::Crossprod(Delta, Rfast::mat.mult(H,X)))
+  return(crossprod(Delta,H%*%X))
 }

@@ -24,5 +24,5 @@ acSPCA <- function(X,Y,A,lambda,npc,resp.kernel=c("linear","delta"), conf.kernel
   Ky <- respkernel(Y, dim(Y)[[1]], resp.kernel)
   H <- diag(x=1, nrow=nobs) - 1/nobs*rep(1,nobs)%*%t(rep(1,nobs))
   
-  return(eigs_sym(mat.mult(mat.mult(mat.mult(Crossprod(X,H),Ky),H),X) - lambda*mat.mult(mat.mult(mat.mult(Crossprod(X,H),Ka),H),X), k=npc, which="LA"))
+  return(RSpectra::eigs_sym((crossprod(X,H)%*%Ky%*%H%*%X - lambda*crossprod(X,H)%*%Ka%*%H%*%X), k=npc, which="LA"))
 }

@@ -9,5 +9,5 @@
 
 sspca.orthog <- function(X,v,nobs,p){
   Q <- diag(1,p) - tcrossprod(v,v)
-  return(Rfast::mat.mult(X,Q))
+  return(X%*%Q)
 }

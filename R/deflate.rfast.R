@@ -4,19 +4,19 @@
 #' @param p number of predictors in data matrix X
 #' @keywords Sparse Adjusted Confounding Supervised Principal Component Analysis
 #' @export
-#' @examples deflate(X,V,p)
+#' @examples deflate.rfast(X,V,p)
 
-deflate <- function(X,V,p){
+deflate.rfast <- function(X,V,p){
   # Encode vectors to data matrix
-  Z <- X%*%as.matrix(V)
+  Z <- Rfast::mat.mult(X,as.matrix(V))
   
   # Generate spanning vector
   #P <- t(X)%*%Z%*%solve(t(Z)%*%Z)
-  P <- crossprod(X,Z%*%solve(crossprod(Z,Z)))
+  P <- Rfast::mat.mult(Rfast::Crossprod(X,Z),Rfast::spdinv(Rfast::Crossprod(Z,Z)))
   
   # Generate orthogonal projection matrix
   #Q <- diag(x=1,nrow = p) - P%*%solve(t(P)%*%P)%*%t(P)
-  Q <- diag(x=1,nrow = p) - P%*%tcrossprod(solve(crossprod(P,P)),P)
+  Q <- diag(x=1,nrow = p) - Rfast::mat.mult(P,Rfast::Tcrossprod(Rfast::spdinv(Rfast::Crossprod(P,P)),P))
   
-  return(X%*%Q)
+  return(Rfast::mat.mult(X,Q))
 }

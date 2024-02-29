@@ -21,11 +21,7 @@ ac.resid.spca <- function(X, Y, a, L, A, H, lambda, npc, fast.mat=F, parallel=F,
   resid.dat = get.residual(X=X, Y=Y, a=a, parallel=parallel,clust=clust)
   X.star = matrix(resid.dat$X.star,nrow = n,ncol = p)
   X.tilde = matrix(resid.dat$X.tilde,nrow = n,ncol = p)
-  if(fast.mat){
-    return(reg.mat.eig.sym.decomp(X.star=X.star,X.tilde=X.tilde,A=A,
+  return(reg.mat.eig.sym.decomp(X.star=X.star,X.tilde=X.tilde,A=A,
                                   L=L,H=H,lambda=lambda,npc=npc)$vectors)
-  } else{
-    return(rfast.mat.eig.sym.decomp(X.star=X.star,X.tilde=X.tilde,A=A,
-                                    L=L,H=H,lambda=lambda,npc=npc)$vectors)
-  }
+
 }

@@ -9,7 +9,7 @@
 respkernel <- function(Y, n, kernel){
   
   if (kernel=="linear"){
-    L <- Tcrossprod(Y,Y)
+    L <- tcrossprod(Y,Y)
   } else if (kernel=="delta"){
     yf <- as.factor(Y)
     L<-matrix(0,n,n)
