@@ -70,9 +70,9 @@ cv.acSSPCA <- function(X,Y,A,lambda,npc,resp.kernel=c("linear","delta"),
   if(max(c2) > sqrt(p)) stop("Cannot have maximum value greater than the square root of the number of predictors")
   n.c2 <- length(c2)
   
-  if(is.null(colnames(X))) colnames(X) <- paste0("X",1:p)
-  if(is.null(colnames(Y))) colnames(Y) <- paste0("Y",1:dim(Y)[[2]])
-  if(is.null(colnames(A))) colnames(A) <- paste0("A",1:dim(A)[[2]])
+  colnames(X) <- paste0("X",1:p)
+  colnames(Y) <- "y"
+  colnames(A) <- paste0("A",1:dim(A)[[2]])
   
   x.names <- colnames(X)
   y.names <- colnames(Y)
